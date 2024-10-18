@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Historical Investment Return Calculator",
+  "url": "https://www.whatifcalculators.com",
+  "description": "Find out how much your investment would be worth today. Use our Historical Investment Return Calculator to see your missed gains and investment growth over time.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "softwareVersion": "1.0",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}

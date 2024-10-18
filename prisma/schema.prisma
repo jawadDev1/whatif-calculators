@@ -1,0 +1,40 @@
+// schema.prisma
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+// datasource db {
+//     provider = "postgresql"
+//     url      = env("DATABASE_URL") // uses connection pooling
+//     // uses a direct connection
+// }
+
+datasource db {
+    provider  = "postgresql"
+    url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+    directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+// directUrl = env("POSTGRES_URL_NON_POOLING")
+
+model TopSharesList {
+    id      String   @id @default(cuid())
+    name    String
+    slug    String
+    symbol  String
+    ipoDate DateTime
+    volume  BigInt
+    type    String?  @default("share")
+}
+
+model SharesData {
+    id     String   @id @default(cuid())
+    symbol String
+    date   DateTime
+    open   Float
+    close  Float
+    high   Float
+    low    Float
+    volume BigInt
+}
