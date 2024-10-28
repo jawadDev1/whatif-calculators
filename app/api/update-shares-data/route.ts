@@ -7,7 +7,7 @@ import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic"; // static by default, unless reading the request
 
-export const revalidate = 0;
+// export const revalidate = 0;
 
 export async function GET(request: Request) {
   const authHeader = request.headers.get("authorization");
