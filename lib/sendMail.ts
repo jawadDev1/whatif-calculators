@@ -29,7 +29,8 @@ export const sendMail = async ({
   try {
     const info = await transport.sendMail({
       from: "whatifcalc28@gmail.com",
-      to: "himathew206@gmail.com",
+      to: "darkjoker0t@gmail.com",
+      // to: "himathew206@gmail.com",
       subject: success
         ? `✅ Cron Job Success: ${jobName} Completed Successfully`
         : `🚨 Cron Job Failure Alert: ${jobName} Failed`,
