@@ -10,12 +10,12 @@ export const dynamic = "force-dynamic"; // static by default, unless reading the
 export const revalidate = 0;
 
 export async function GET(request: Request) {
-  // const authHeader = request.headers.get("authorization");
-  // if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-  //   return new Response("Unauthorized", {
-  //     status: 401,
-  //   });
-  // }
+  const authHeader = request.headers.get("authorization");
+  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    return new Response("Unauthorized", {
+      status: 401,
+    });
+  }
 
   try {
     const sharesList = await prisma.topSharesList.findMany({
