@@ -2,7 +2,7 @@
   "crons": [
     {
       "path": "/api/update-shares-data",
-      "schedule": "55 10 28 * *"
+      "schedule": "05 12 28 * *"
     }
   ]
 }
