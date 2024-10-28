@@ -10,6 +10,7 @@ export const dynamic = "force-dynamic"; // static by default, unless reading the
 export const revalidate = 0
 
 export async function GET(request: Request) {
+  console.log("Cron Secret ============> ", request.headers)
   const authHeader = request.headers.get("authorization");
   if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
     return new Response("Unauthorized", {
