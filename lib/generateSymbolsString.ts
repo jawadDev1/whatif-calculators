@@ -2,6 +2,7 @@ import { ShareListType } from "@/types";
 
 export  const generateSymbolsString = (
   sharesList: {
+    name: string;
     symbol: string;
     type: string | null;
   }[]

@@ -1,4 +1,4 @@
-import { Share } from "@/types";
+import { Share, ShareListType } from "@/types";
 import nodemailer from "nodemailer";
 
 interface Params {
@@ -6,7 +6,11 @@ interface Params {
   timestamp: string;
   success: boolean;
   error?: Error;
-  sharesList: Share[];
+  sharesList: {
+    name: string;
+    symbol: string;
+    type: string | null;
+  }[];
 }
 
 export const sendMail = async ({
@@ -52,7 +56,7 @@ export const sendMail = async ({
               : "Failed to update all shares. something went wrong"
           }</h3>
         <ul>
-        ${sharesList?.map((share) => `<li>${share.symbol}</li>`).join("")} 
+        ${sharesList?.map((share) => `<li>${share.name} (${share.symbol})</li>`).join("")} 
        ${
          success
            ? ""

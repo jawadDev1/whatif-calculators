@@ -34,9 +34,9 @@ const updateShares = async () => {
         ? `${sharesList[i].symbol}-USD`
         : sharesList[i].symbol;
 
-    // const data: { data?: Share; success: boolean } = await getShareDailyData(
-    //   symbol
-    // );
+    const data: { data?: Share; success: boolean } = await getShareDailyData(
+      symbol
+    );
     const res = await client.publishJSON({
       url: `${process.env.SHARE_DATA_API_URL}/stock/daily/${symbol}`,
       body: {
@@ -87,6 +87,7 @@ export async function GET(request: Request) {
   try {
     const sharesList = await prisma.topSharesList.findMany({
       select: {
+        name: true,
         symbol: true,
         type: true,
       },
@@ -106,7 +107,7 @@ export async function GET(request: Request) {
 
     const result = await res.json();
 
-    const sharesData = formatApiData(result["data"]);
+    const sharesData: Share[] = formatApiData(result["data"]);
 
     await prisma.sharesData.createMany({
       data: sharesData,
@@ -116,12 +117,11 @@ export async function GET(request: Request) {
       jobName: "update-shares-data",
       timestamp: new Date().toString(),
       success: true,
-      sharesList: sharesData,
+      sharesList: sharesList,
     });
 
     console.log(
       "Shares data updated Successfully ==============================> ",
-      sharesData,
       new Date()
     );
 
